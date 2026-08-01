@@ -137,41 +137,28 @@ header{
 
 }
 
-.logo{
+/* =======================================================
+   THEME TOGGLE
+======================================================= */
 
-    display:flex;
+.theme-toggle{
 
-    align-items:center;
+    width:24px;
+    height:24px;
 
-    gap:14px;
+    border-radius:50%;
 
-}
+    border:2px solid var(--text);
 
-.logo span{
+    background:transparent;
 
-    font-size:34px;
-
-}
-
-.logo h1{
-
-    font-size:18px;
-
-    font-weight:400;
-
-    letter-spacing:.35em;
-
-    color:var(--text);
+    transition:.25s;
 
 }
 
-.credits{
+.theme-toggle:hover{
 
-    font-size:11px;
-
-    color:var(--text-faded);
-
-    letter-spacing:.08em;
+    transform:scale(1.1);
 
 }
 
@@ -303,30 +290,6 @@ main{
         inset 0 -6px 0 rgba(0,0,0,.08),
 
         0 14px 26px rgba(0,0,0,.08);
-
-}
-
-.pager::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:18px;
-
-    right:24px;
-
-    width:10px;
-
-    height:10px;
-
-    border-radius:50%;
-
-    background:#87cf7a;
-
-    box-shadow:
-
-        0 0 8px rgba(135,207,122,.35);
 
 }
 
@@ -1585,5 +1548,44 @@ main{
         translate(0,-50%)
 
         scale(1.15);
+
+}
+
+/* =======================================================
+   DARK THEME
+======================================================= */
+
+body.dark{
+
+    --bg:#18161d;
+
+    --text:#ece9ef;
+    --text-light:#b3afbb;
+    --text-faded:#77727d;
+
+    --pager:#2b2732;
+    --pager-dark:#221f28;
+    --pager-border:#4a4455;
+
+    --lcd:#88977b;
+    --lcd-border:#697460;
+    --lcd-text:#1f251c;
+
+    --button:#34303c;
+    --button-hover:#403a49;
+    --button-border:#514a5c;
+
+    --line:#45404c;
+
+    --printer:#2d2a34;
+    --printer-dark:#222028;
+    --printer-slot:#111;
+
+    --receipt:#ede7dd;
+    --receipt-text:#3c3c3c;
+    --receipt-line:#b4b4b4;
+
+    --toggle:#35323d;
+    --toggle-active:#4a4455;
 
 }

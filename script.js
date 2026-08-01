@@ -51,7 +51,9 @@ const DOM = {
 
     closeReport: document.getElementById("closeReport"),
 
-    addTaskBtn: document.getElementById("addTaskBtn")
+    addTaskBtn: document.getElementById("addTaskBtn"),
+
+    themeToggle: document.getElementById("themeToggle")
 };
 
 /* ======================================================
@@ -230,16 +232,52 @@ function save(){
 }
 
 /* ======================================================
+   THEME
+====================================================== */
+
+const Theme = {
+
+    toggle(){
+
+        document.body.classList.toggle("dark");
+
+        localStorage.setItem(
+
+            "theme",
+
+            document.body.classList.contains("dark")
+                ? "dark"
+                : "light"
+
+        );
+
+    },
+
+    load(){
+
+        if(
+
+            localStorage.getItem("theme")
+
+            === "dark"
+
+        ){
+
+            document.body.classList.add("dark");
+
+        }
+
+    }
+
+};
+
+/* ======================================================
    TASK MANAGER
 ====================================================== */
 
 const TaskManager = {
 
 add(){
-
-    console.log("ADD CALLED");
-
-    const title = DOM.taskInput.value.trim();
 
     const title = DOM.taskInput.value.trim();
 
@@ -841,6 +879,12 @@ Receipt.renderLast = function(){
    EVENT LISTENERS
 ====================================================== */
 
+DOM.themeToggle.onclick = ()=>{
+
+    Theme.toggle();
+
+};
+
 // Add task with button
 
 DOM.addTaskBtn.onclick = () => {
@@ -928,6 +972,7 @@ function init(){
     Storage.load();
 
     // Draw UI
+    Theme.load();
 
     TaskManager.render();
 
