@@ -1507,3 +1507,83 @@ main{
     }
 
 }
+
+/* =======================================================
+   DELETE TASK
+======================================================= */
+
+.task{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.task-left{
+
+    transition:transform .25s ease;
+
+}
+
+.delete-task{
+
+    position:absolute;
+
+    right:0;
+
+    top:50%;
+
+    transform:translate(40px,-50%);
+
+    width:34px;
+
+    height:34px;
+
+    border:none;
+
+    background:none;
+
+    color:#d05c5c;
+
+    font-size:22px;
+
+    opacity:0;
+
+    cursor:pointer;
+
+    transition:
+
+        transform .25s ease,
+
+        opacity .25s ease,
+
+        color .2s;
+
+}
+
+.task:hover .task-left{
+
+    transform:translateX(-26px);
+
+}
+
+.task:hover .delete-task{
+
+    transform:translate(0,-50%);
+
+    opacity:1;
+
+}
+
+.delete-task:hover{
+
+    color:#a72626;
+
+    transform:
+
+        translate(0,-50%)
+
+        scale(1.15);
+
+}

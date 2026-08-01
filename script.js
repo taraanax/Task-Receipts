@@ -237,6 +237,10 @@ const TaskManager = {
 
 add(){
 
+    console.log("ADD CALLED");
+
+    const title = DOM.taskInput.value.trim();
+
     const title = DOM.taskInput.value.trim();
 
     if(title === "") return;
@@ -324,19 +328,35 @@ render(){
 
         div.innerHTML = `
 
-            <div class="task-left">
+        <div class="task-left">
 
-                <div class="task-circle"></div>
+            <div class="task-circle"></div>
 
-                <span class="task-name">
+            <span class="task-name">
 
-                    ${task.title}
+                ${task.title}
 
-                </span>
+            </span>
 
-            </div>
+        </div>
+
+        <button class="delete-task">
+
+            ×
+
+        </button>
 
         `;
+
+        const deleteBtn = div.querySelector(".delete-task");
+
+        deleteBtn.onclick = (e)=>{
+
+            e.stopPropagation();
+
+            this.remove(task.id);
+
+        };
 
         div.onclick = ()=>{
 
@@ -412,6 +432,31 @@ switchTab(tab){
         DOM.doneTab.classList.add("active");
 
     }
+
+    this.render();
+
+},
+
+remove(id){
+
+    if(state.currentTask &&
+       state.currentTask.id === id){
+
+        Timer.reset();
+
+        state.currentTask = null;
+
+        DOM.currentTask.textContent = "NONE";
+
+    }
+
+    state.tasks = state.tasks.filter(
+
+        task => task.id !== id
+
+    );
+
+    save();
 
     this.render();
 
