@@ -1,0 +1,1507 @@
+/* =======================================================
+   RESET
+======================================================= */
+
+*,
+*::before,
+*::after{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+button,
+input{
+
+    font:inherit;
+
+}
+
+button{
+
+    cursor:pointer;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+img{
+
+    display:block;
+
+    max-width:100%;
+
+}
+
+
+/* =======================================================
+   ROOT
+======================================================= */
+
+:root{
+
+    /* Background */
+
+    --bg:#eceae6;
+
+    /* Text */
+
+    --text:#353535;
+    --text-light:#767676;
+    --text-faded:#a8a8a8;
+
+    /* Pager */
+
+    --pager:#efefef;
+    --pager-dark:#d7d7d7;
+    --pager-border:#c5c5c5;
+
+    /* LCD */
+
+    --lcd:#bcc4ab;
+    --lcd-border:#98a18d;
+    --lcd-text:#424b3e;
+
+    /* Buttons */
+
+    --button:#e8e8e8;
+    --button-hover:#dedede;
+    --button-border:#c7c7c7;
+
+    /* Divider */
+
+    --line:#d7d7d7;
+
+    /* Printer */
+
+    --printer:#d6d6d4;
+    --printer-dark:#969696;
+    --printer-slot:#2f2f2f;
+
+    /* Receipt */
+
+    --receipt:#f4f1ea;
+    --receipt-text:#494949;
+    --receipt-line:#b8b8b8;
+
+    /* Toggle */
+
+    --toggle:#ebebeb;
+    --toggle-active:#ffffff;
+
+    /* Accent */
+
+    --accent:#3c3c3c;
+
+}
+
+
+/* =======================================================
+   BODY
+======================================================= */
+
+body{
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    font-family:"Space Mono", monospace;
+
+    overflow-x:hidden;
+
+}
+
+
+/* =======================================================
+   HEADER
+======================================================= */
+
+header{
+
+    width:min(1700px,94vw);
+
+    margin:28px auto 42px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.logo span{
+
+    font-size:34px;
+
+}
+
+.logo h1{
+
+    font-size:18px;
+
+    font-weight:400;
+
+    letter-spacing:.35em;
+
+    color:var(--text);
+
+}
+
+.credits{
+
+    font-size:11px;
+
+    color:var(--text-faded);
+
+    letter-spacing:.08em;
+
+}
+
+
+/* =======================================================
+   MAIN
+======================================================= */
+
+main{
+
+    width:min(1700px,94vw);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:460px 1fr;
+
+    column-gap:120px;
+
+    align-items:start;
+
+}
+
+
+/* =======================================================
+   LEFT PANEL
+======================================================= */
+
+.left-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:34px;
+
+}
+
+
+/* =======================================================
+   RIGHT PANEL
+======================================================= */
+
+.right-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:34px;
+
+}
+
+
+/* =======================================================
+   COMMON
+======================================================= */
+
+.divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:var(--line);
+
+}
+
+.hidden{
+
+    display:none!important;
+
+}
+
+::selection{
+
+    background:#d7d7d7;
+
+    color:#222;
+
+}
+
+
+/* =======================================================
+   SCROLLBAR
+======================================================= */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#b8b8b8;
+
+    border-radius:999px;
+
+}
+
+/* =======================================================
+   PAGER
+======================================================= */
+
+.pager{
+
+    width:420px;
+
+    background:var(--pager);
+
+    border:2px solid var(--pager-border);
+
+    border-radius:52px;
+
+    padding:26px;
+
+    box-shadow:
+
+        inset 0 -6px 0 rgba(0,0,0,.08),
+
+        0 14px 26px rgba(0,0,0,.08);
+
+}
+
+.pager::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:18px;
+
+    right:24px;
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#87cf7a;
+
+    box-shadow:
+
+        0 0 8px rgba(135,207,122,.35);
+
+}
+
+.pager::after{
+
+    content:"TASK RECEIPTS";
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:12px;
+
+    transform:translateX(-50%);
+
+    font-size:9px;
+
+    letter-spacing:.25em;
+
+    color:#9d9d9d;
+
+}
+
+.lcd{
+
+    transform:
+
+        perspective(900px)
+
+        rotateX(1.5deg);
+
+    width:100%;
+
+    height:210px;
+
+    background:var(--lcd);
+
+    border:6px solid var(--lcd-border);
+
+    border-radius:26px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    padding:18px;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.lcd .noise{
+
+    display:none;
+
+}
+
+/* =======================================================
+   LCD GLASS
+======================================================= */
+
+.lcd::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(
+
+            ellipse at center,
+
+            transparent 45%,
+
+            rgba(0,0,0,.10) 100%
+
+        ),
+
+        linear-gradient(
+
+            130deg,
+
+            rgba(255,255,255,.20),
+
+            transparent 28%
+
+        );
+
+    pointer-events:none;
+
+}
+
+.lcd::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:.18;
+
+    background-size:8px 8px;
+
+    background-image:
+
+        linear-gradient(
+            rgba(70,70,70,.08) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(70,70,70,.08) 1px,
+            transparent 1px
+        );
+
+    pointer-events:none;
+
+}
+
+
+/* =======================================================
+   STATUS
+======================================================= */
+
+.status{
+
+    font-size:13px;
+
+    color:var(--lcd-text);
+
+    opacity:.8;
+
+    text-transform:uppercase;
+
+    letter-spacing:.18em;
+
+    font-size:10px;
+
+}
+
+.status span{
+
+    display:block;
+
+    margin-top:6px;
+
+    font-weight:700;
+    
+    margin-top:10px;
+
+    font-size:14px;
+
+    letter-spacing:.08em;
+
+}
+
+
+/* =======================================================
+   TIMER
+======================================================= */
+
+#timer{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-family:"Share Tech Mono", monospace;
+
+    font-size:78px;
+
+    letter-spacing:8px;
+
+    color:var(--lcd-text);
+
+    text-shadow:
+
+        1px 1px rgba(255,255,255,.15),
+
+        -1px -1px rgba(0,0,0,.08);
+
+    filter:contrast(.95);
+
+    image-rendering:pixelated;
+
+    font-variant-numeric:tabular-nums;
+
+    user-select:none;
+}
+
+.breaks{
+
+    font-size:12px;
+
+    color:var(--lcd-text);
+
+    opacity:.75;
+
+    text-align:right;
+
+}
+
+
+/* =======================================================
+   CONTROLS
+======================================================= */
+
+.controls{
+
+    margin-top:24px;
+
+    display:flex;
+
+    gap:18px;
+
+}
+
+.controls button{
+
+    flex:1;
+
+    height:74px;
+
+    border:none;
+
+    border-radius:24px;
+
+    background:var(--button);
+
+    border:2px solid var(--button-border);
+
+    color:var(--text);
+
+    font-size:26px;
+
+    transition:.15s;
+
+    box-shadow:
+
+        inset 0 -5px 0 rgba(0,0,0,.08);
+
+}
+
+.controls button:hover{
+
+    background:var(--button-hover);
+
+}
+
+.controls button:active{
+
+    transform:translateY(4px);
+
+    box-shadow:
+
+        inset 0 5px 0 rgba(0,0,0,.08);
+
+}
+
+
+/* =======================================================
+   BUTTON COLORS
+======================================================= */
+
+#startBtn{
+
+    color:#2f6944;
+
+}
+
+#pauseBtn{
+
+    color:#9b7b2d;
+
+}
+
+#endBtn{
+
+    color:#7d3636;
+
+}
+
+
+/* =======================================================
+   PAGER DETAILS
+======================================================= */
+
+.pager::before{
+
+    content:"";
+
+    display:block;
+
+    width:90px;
+
+    height:6px;
+
+    margin:0 auto 18px;
+
+    border-radius:999px;
+
+    background:
+
+        rgba(0,0,0,.08);
+
+}
+
+.pager::after{
+
+    content:"TASK RECEIPTS";
+
+    display:block;
+
+    text-align:center;
+
+    margin-top:18px;
+
+    font-size:10px;
+
+    letter-spacing:.25em;
+
+    color:#999;
+
+}
+
+/* =======================================================
+   TASK SECTION
+======================================================= */
+
+.tasks-section{
+
+    width:420px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+
+/* =======================================================
+   HEADER
+======================================================= */
+
+.tasks-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.tasks-header h2{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    letter-spacing:.08em;
+
+}
+
+
+/* =======================================================
+   SEGMENT CONTROL
+======================================================= */
+
+.segment{
+
+    width:170px;
+
+    height:42px;
+
+    padding:4px;
+
+    display:flex;
+
+    border-radius:999px;
+
+    background:var(--toggle);
+
+    border:1px solid var(--line);
+
+}
+
+.segment button{
+
+    flex:1;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:transparent;
+
+    color:var(--text-light);
+
+    font-size:12px;
+
+    transition:.2s;
+
+}
+
+.segment button.active{
+
+    background:var(--toggle-active);
+
+    color:var(--text);
+
+    font-weight:700;
+
+    box-shadow:0 2px 5px rgba(0,0,0,.08);
+
+}
+
+
+/* =======================================================
+   NEW TASK
+======================================================= */
+
+.new-task{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:14px 0;
+
+    border-bottom:1px solid var(--line);
+
+}
+
+.new-task span{
+
+    font-size:22px;
+
+    color:var(--text-light);
+
+    user-select:none;
+
+}
+
+.new-task input{
+
+    flex:1;
+
+    border:none;
+
+    background:transparent;
+
+    outline:none;
+
+    color:var(--text);
+
+    font-size:15px;
+
+}
+
+.new-task input::placeholder{
+
+    color:var(--text-faded);
+
+}
+
+.new-task button{
+
+    width:28px;
+
+    height:28px;
+
+    border:none;
+
+    background:transparent;
+
+    color:var(--text-light);
+
+    font-size:24px;
+
+    line-height:1;
+
+    transition:.2s;
+
+}
+
+.new-task button:hover{
+
+    color:var(--text);
+
+    transform:scale(1.15);
+
+}
+
+
+/* =======================================================
+   TASK LIST
+======================================================= */
+
+#taskList{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+/* =======================================================
+   TASK ITEM
+======================================================= */
+
+.task{
+
+    height:56px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    border-bottom:1px solid var(--line);
+
+    transition:.15s;
+
+}
+
+.task:hover{
+
+    padding-left:8px;
+
+}
+
+
+/* =======================================================
+   LEFT
+======================================================= */
+
+.task-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+
+/* =======================================================
+   CIRCLE
+======================================================= */
+
+.task-circle{
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    border:2px solid var(--text-light);
+
+    flex-shrink:0;
+
+    transition:.2s;
+
+}
+
+.task:hover .task-circle{
+
+    border-color:var(--text);
+
+}
+
+
+/* =======================================================
+   NAME
+======================================================= */
+
+.task-name{
+
+    font-size:15px;
+
+    color:var(--text);
+
+}
+
+
+/* =======================================================
+   ACTIVE TASK
+======================================================= */
+
+.task.active{
+
+    background:rgba(255,255,255,.22);
+
+    border-radius:10px;
+
+    padding-left:10px;
+
+}
+
+.task.active .task-circle{
+
+    background:var(--text);
+
+}
+
+
+/* =======================================================
+   DONE
+======================================================= */
+
+.task.done{
+
+    opacity:.55;
+
+}
+
+.task.done .task-name{
+
+    text-decoration:line-through;
+
+}
+
+.task.done .task-circle{
+
+    background:var(--text-light);
+
+    border-color:var(--text-light);
+
+}
+
+
+/* =======================================================
+   DURATION
+======================================================= */
+
+.task-time{
+
+    font-size:11px;
+
+    color:var(--text-faded);
+
+}
+
+
+/* =======================================================
+   EMPTY STATE
+======================================================= */
+
+.empty{
+
+    padding:40px 0;
+
+    text-align:center;
+
+    color:var(--text-faded);
+
+    font-size:13px;
+
+}
+
+/* =======================================================
+   PRINTER
+======================================================= */
+
+.printer{
+
+    width:460px;
+
+    min-height:720px;
+
+    background:var(--printer);
+
+    border:2px solid var(--pager-border);
+
+    border-radius:42px;
+
+    padding:26px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:
+
+        inset 0 -6px 0 rgba(0,0,0,.08),
+
+        0 16px 28px rgba(0,0,0,.08);
+
+}
+
+.printer-slot{
+
+    width:180px;
+
+    height:12px;
+
+    margin:0 auto 28px;
+
+    background:var(--printer-slot);
+
+    border-radius:999px;
+
+    box-shadow:
+
+        inset 0 2px 6px rgba(0,0,0,.35);
+
+}
+
+.receipt-feed{
+
+    width:170px;
+
+    height:6px;
+
+    margin:auto;
+
+    background:var(--receipt);
+
+    border-radius:0 0 3px 3px;
+
+    transform:translateY(-7px);
+
+    transition:transform .8s cubic-bezier(.2,.9,.2,1);
+
+}
+
+/* =======================================================
+   RECEIPT PRINT STATE
+======================================================= */
+
+.printer.printing .receipt-feed{
+
+    transform:translateY(18px);
+
+}
+
+.printer.printing .receipt{
+
+    animation:printReceipt .8s ease;
+
+}
+
+
+/* =======================================================
+   RECEIPT CONTAINER
+======================================================= */
+
+#receiptContainer{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    min-height:560px;
+
+}
+
+
+/* =======================================================
+   EMPTY STATE
+======================================================= */
+
+.receipt-placeholder{
+
+    margin-top:120px;
+
+    text-align:center;
+
+    color:var(--text-faded);
+
+    line-height:2;
+
+}
+
+
+/* =======================================================
+   RECEIPT
+======================================================= */
+
+.receipt{
+
+    position:relative;
+
+    width:290px;
+
+    background:var(--receipt);
+
+    color:var(--receipt-text);
+
+    padding:26px;
+
+    font-family:"Courier Prime", monospace;
+
+    animation:printReceipt .55s ease;
+
+    box-shadow:
+
+        0 4px 12px rgba(0,0,0,.08);
+
+}
+
+
+/* =======================================================
+   PAPER TEXTURE
+======================================================= */
+
+.receipt::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:.18;
+
+    background-image:
+
+        radial-gradient(
+
+            rgba(0,0,0,.08) .6px,
+
+            transparent .7px
+
+        );
+
+    background-size:5px 5px;
+
+    pointer-events:none;
+
+}
+
+
+/* =======================================================
+   TORN EDGE
+======================================================= */
+
+.receipt::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-12px;
+
+    width:100%;
+
+    height:12px;
+
+    background:
+
+    repeating-linear-gradient(
+
+        -45deg,
+
+        transparent 0 6px,
+
+        var(--receipt) 6px 12px
+
+    );
+
+}
+
+
+/* =======================================================
+   RECEIPT HEADER
+======================================================= */
+
+.receipt-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:11px;
+
+    margin-bottom:18px;
+
+}
+
+.receipt-line{
+
+    border-bottom:1px dashed var(--receipt-line);
+
+    margin:14px 0;
+
+}
+
+.receipt-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin:10px 0;
+
+    font-size:14px;
+
+}
+
+.receipt-row strong{
+
+    font-weight:700;
+
+}
+
+
+/* =======================================================
+   FOCUS
+======================================================= */
+
+.receipt-focus{
+
+    text-align:center;
+
+    margin:16px 0;
+
+    letter-spacing:.18em;
+
+    font-size:13px;
+
+}
+
+.receipt-squares{
+
+    font-size:12px;
+
+    line-height:22px;
+
+    word-break:break-all;
+
+}
+
+.receipt-footer{
+
+    text-align:center;
+
+    margin-top:18px;
+
+    font-size:11px;
+
+    opacity:.75;
+
+}
+
+
+/* =======================================================
+   REPORT BUTTON
+======================================================= */
+
+#reportBtn{
+
+    width:220px;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:var(--button);
+
+    border:2px solid var(--button-border);
+
+    color:var(--text);
+
+    transition:.2s;
+
+}
+
+#reportBtn:hover{
+
+    background:var(--button-hover);
+
+}
+
+
+/* =======================================================
+   MODAL
+======================================================= */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    backdrop-filter:blur(6px);
+
+}
+
+.modal-content{
+
+    width:640px;
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    background:var(--bg);
+
+    border-radius:32px;
+
+    padding:32px;
+
+    border:1px solid var(--line);
+
+}
+
+.modal-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:24px;
+
+}
+
+.modal-top h2{
+
+    font-size:20px;
+
+}
+
+.modal-top button{
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--button);
+
+    border:1px solid var(--button-border);
+
+}
+
+
+/* =======================================================
+   REPORT RECEIPT
+======================================================= */
+
+#reportReceipt{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+
+/* =======================================================
+   ANIMATIONS
+======================================================= */
+
+@keyframes printReceipt{
+
+    from{
+
+        transform:
+
+            translateY(-180px);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:
+
+            translateY(0);
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes pulseTask{
+
+    0%{
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        opacity:.65;
+
+    }
+
+    100%{
+
+        opacity:1;
+
+    }
+
+}
+
+.task.active{
+
+    animation:pulseTask 2.5s infinite;
+
+}
+
+
+/* =======================================================
+   RESPONSIVE
+======================================================= */
+
+@media(max-width:1200px){
+
+    main{
+
+        grid-template-columns:1fr;
+
+        row-gap:60px;
+
+    }
+
+    .left-panel,
+    .right-panel{
+
+        width:100%;
+
+        align-items:center;
+
+    }
+
+}

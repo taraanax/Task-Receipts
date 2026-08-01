@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Task Receipts</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Share+Tech+Mono&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        <span>🧾</span>
+
+        <h1>TASK RECEIPTS</h1>
+
+    </div>
+
+</header>
+
+<main>
+
+<!-- ====================================== -->
+<!-- LEFT SIDE -->
+<!-- ====================================== -->
+
+<section class="left-panel">
+
+    <!-- PAGER -->
+
+    <div class="pager">
+
+        <div class="lcd">
+
+            <div class="status">
+
+                CURRENT TASK
+
+                <span id="currentTask">
+
+                NONE
+
+                </span>
+
+            </div>
+
+            <h1 id="timer">00:00</h1>
+
+            <p class="breaks">
+                0 breaks taken
+            </p>
+
+        </div>
+
+        <div class="controls">
+
+            <button id="startBtn">
+
+                <span>▶</span>
+
+            </button>
+
+            <button id="pauseBtn">
+                <span>❚❚</span>
+            </button>
+
+            <button id="endBtn">
+                <span>✓</span>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- TASKS -->
+
+    <section class="tasks-section">
+
+        <div class="tasks-header">
+
+            <h2>
+
+                TASK LIST
+
+            </h2>
+
+            <div class="segment">
+
+                <button
+                    id="ongoingTab"
+                    class="active">
+
+                    ongoing
+
+                </button>
+
+                <button
+                    id="doneTab">
+
+                    done
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- ADD TASK -->
+
+    <div class="new-task">
+        
+        <button id="addTaskBtn">
+
+            +
+
+        </button>
+
+        <input
+            id="taskName"
+            placeholder="Add new task..."
+        >
+
+    </div>
+
+        <div id="taskList">
+
+            <!-- JS -->
+
+        </div>
+
+    </section>
+
+</section>
+
+
+
+<!-- ====================================== -->
+<!-- RIGHT SIDE -->
+<!-- ====================================== -->
+
+<section class="right-panel">
+
+    <div class="printer">
+
+        <div class="printer-slot">
+
+            <div class="receipt-feed"></div>
+
+        </div>
+
+        <div id="receiptContainer">
+
+            <div class="receipt-placeholder">
+
+                Finish your first task
+                <br>
+                to print a receipt.
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <button id="reportBtn">
+
+        Session Summary
+
+    </button>
+
+</section>
+
+</main>
+
+
+
+<!-- ====================================== -->
+<!-- REPORT MODAL -->
+<!-- ====================================== -->
+
+<div
+    id="reportModal"
+    class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-top">
+
+            <h2>
+
+                SESSION REPORT
+
+            </h2>
+
+            <button id="closeReport">
+
+                ✕
+
+            </button>
+
+        </div>
+
+        <div id="reportReceipt">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<!-- ====================================== -->
+<!-- RECEIPT TEMPLATE -->
+<!-- ====================================== -->
+
+<template id="receiptTemplate">
+
+<div class="receipt">
+
+    <div class="receipt-top">
+
+        <span>
+
+            TASK RECEIPT
+
+        </span>
+
+        <span class="receipt-date">
+
+        </span>
+
+    </div>
+
+    <div class="receipt-line"></div>
+
+    <div class="receipt-row">
+
+        <span>Task</span>
+
+        <strong class="receipt-task"></strong>
+
+    </div>
+
+    <div class="receipt-row">
+
+        <span>Worker</span>
+
+        <strong class="receipt-worker"></strong>
+
+    </div>
+
+    <div class="receipt-row">
+
+        <span>Started</span>
+
+        <strong class="receipt-start"></strong>
+
+    </div>
+
+    <div class="receipt-row">
+
+        <span>Finished</span>
+
+        <strong class="receipt-end"></strong>
+
+    </div>
+
+    <div class="receipt-row">
+
+        <span>Duration</span>
+
+        <strong class="receipt-duration"></strong>
+
+    </div>
+
+    <div class="receipt-line"></div>
+
+    <p class="receipt-focus">
+
+        FOCUS
+
+    </p>
+
+    <div class="receipt-squares">
+
+    </div>
+
+    <div class="receipt-line"></div>
+
+    <div class="receipt-footer">
+
+        1 ■ = 1 minute
+
+    </div>
+
+</div>
+
+</template>
+
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
