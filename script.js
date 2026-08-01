@@ -661,6 +661,126 @@ const Receipt = {
 };
 
 /* ======================================================
+   REPORT
+====================================================== */
+
+const Report = {
+
+    open(){
+
+        this.render();
+
+        DOM.reportModal.style.display = "flex";
+
+    },
+
+    close(){
+
+        DOM.reportModal.style.display = "none";
+
+    },
+
+    render(){
+
+        const done = state.tasks.filter(
+
+            task => task.status === "done"
+
+        );
+
+        const totalSeconds = done.reduce(
+
+            (sum, task)=>sum + task.duration,
+
+            0
+
+        );
+
+        const average = done.length
+
+            ? Math.floor(totalSeconds / done.length)
+
+            : 0;
+
+        let html = `
+
+        <div class="receipt">
+
+            <div class="receipt-top">
+
+                <strong>SESSION SUMMARY</strong>
+
+                <span>${Helpers.formatDate(new Date())}</span>
+
+            </div>
+
+            <div class="receipt-line"></div>
+
+            <div class="receipt-row">
+
+                <span>Completed</span>
+
+                <strong>${done.length}</strong>
+
+            </div>
+
+            <div class="receipt-row">
+
+                <span>Total Focus</span>
+
+                <strong>${Helpers.formatTime(totalSeconds)}</strong>
+
+            </div>
+
+            <div class="receipt-row">
+
+                <span>Average</span>
+
+                <strong>${Helpers.formatTime(average)}</strong>
+
+            </div>
+
+            <div class="receipt-line"></div>
+
+        `;
+
+        done.forEach(task=>{
+
+            html += `
+
+                <div class="receipt-row">
+
+                    <span>${task.title}</span>
+
+                    <strong>${Helpers.formatTime(task.duration)}</strong>
+
+                </div>
+
+            `;
+
+        });
+
+        html += `
+
+            <div class="receipt-line"></div>
+
+            <div class="receipt-footer">
+
+                END OF REPORT
+
+            </div>
+
+        </div>
+
+        `;
+
+        DOM.reportReceipt.innerHTML = html;
+
+    }
+
+};
+
+/* ======================================================
    LAST RECEIPT
 ====================================================== */
 
@@ -727,6 +847,28 @@ DOM.pauseBtn.onclick = () => {
 DOM.endBtn.onclick = () => {
 
     Receipt.print();
+
+};
+
+DOM.reportBtn.onclick = () => {
+
+    Report.open();
+
+};
+
+DOM.closeReport.onclick = () => {
+
+    Report.close();
+
+};
+
+DOM.reportModal.onclick = e => {
+
+    if(e.target === DOM.reportModal){
+
+        Report.close();
+
+    }
 
 };
 
